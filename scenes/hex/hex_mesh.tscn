@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://y0cygekdhygv"]
+
+[ext_resource type="Script" path="res://scenes/hex/hex_mesh.gd" id="1_ptcxr"]
+
+[node name="HexMesh" type="MeshInstance3D"]
+script = ExtResource("1_ptcxr")

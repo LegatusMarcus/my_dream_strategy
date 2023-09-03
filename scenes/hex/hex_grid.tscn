@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://gv8h1po87kqh"]
+
+[ext_resource type="Script" path="res://scenes/hex/hex_grid.gd" id="1_7ua5n"]
+[ext_resource type="PackedScene" uid="uid://y0cygekdhygv" path="res://scenes/hex/hex_mesh.tscn" id="2_bamee"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p62qo"]
+vertex_color_use_as_albedo = true
+
+[node name="HexGrid" type="Node3D"]
+script = ExtResource("1_7ua5n")
+
+[node name="HexMesh" parent="." instance=ExtResource("2_bamee")]
+material_override = SubResource("StandardMaterial3D_p62qo")

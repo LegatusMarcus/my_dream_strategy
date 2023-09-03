@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="My Dream Strategy"
+run/main_scene="res://scenes/hex/map_edtitor.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/always_on_top=true
 
 [editor]
 
