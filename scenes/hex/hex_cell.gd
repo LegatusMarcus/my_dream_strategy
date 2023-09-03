@@ -27,3 +27,14 @@ func set_neighbor(direction: int, cell: HexCell) -> void:
 	neighbors[direction] = cell
 	cell.neighbors[HexDirection.opposite(direction)] = self
 
+func get_edge_type(direction: int) -> int:
+	return HexMetrics.get_edge_type(
+		elevation, neighbors[direction].elevation
+	)
+
+func get_edge_cell_type(other_cell: HexCell) -> int:
+	return HexMetrics.get_edge_type(
+		elevation, other_cell.elevation
+	)
+
+
