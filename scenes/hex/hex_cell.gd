@@ -5,7 +5,16 @@ class_name HexCell
 var coordinates: HexCoordinates
 var color: Color
 var neighbors: Array
+var Elevation: int:
+	get:
+		return elevation
+	set(value):
+		elevation = value
+		position.y = value
+		coord_label.position.y = value + 0.001
+var elevation: int
 
+var coord_label: Label3D
 
 func _init() -> void:
 	neighbors.resize(6)

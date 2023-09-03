@@ -106,6 +106,8 @@ func triangulate_connection(direction: int, cell: HexCell, v1: Vector3, v2: Vect
 	var bridge: Vector3 = HexMetrics.get_bridge(direction)
 	var v3: Vector3 = v1 + bridge
 	var v4: Vector3 = v2 + bridge
+	v3.y = neighbor.Elevation
+	v4.y = neighbor.Elevation
 	
 	add_quad(v1, v2, v3, v4)
 	add_quad_two_color(
@@ -115,7 +117,9 @@ func triangulate_connection(direction: int, cell: HexCell, v1: Vector3, v2: Vect
 	
 	var next_neighbor = cell.get_neighbor(HexDirection.next(direction))
 	if direction <= HexDirection.E && next_neighbor != null:
-		add_triangle(v2, v4, v2 + HexMetrics.get_bridge(HexDirection.next(direction)))
+		var v5: Vector3 = v2 + HexMetrics.get_bridge(HexDirection.next(direction))
+		v5.y = next_neighbor.Elevation
+		add_triangle(v2, v4, v5)
 		add_triangle_color_for_each_vertex(
 			cell.color,
 			neighbor.color,

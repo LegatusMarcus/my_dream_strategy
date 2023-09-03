@@ -55,7 +55,14 @@ layout_mode = 2
 button_group = SubResource("ButtonGroup_empgh")
 text = "White"
 
+[node name="VSlider" type="VSlider" parent="UI/VBoxContainer"]
+custom_minimum_size = Vector2(25, 100)
+layout_mode = 2
+max_value = 6.0
+value = 1.0
+
 [connection signal="pressed" from="UI/VBoxContainer/YellowBox" to="." method="_on_yellow_box_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/GreenBox" to="." method="_on_green_box_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/BlueBox" to="." method="_on_blue_box_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/WhiteBox" to="." method="_on_white_box_pressed"]
+[connection signal="value_changed" from="UI/VBoxContainer/VSlider" to="." method="_on_v_slider_value_changed"]

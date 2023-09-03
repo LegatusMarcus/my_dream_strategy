@@ -26,6 +26,7 @@ func _init() -> void:
 	colors.push_back(Color("#548af8"))
 	colors.push_back(Color.WHITE)
 	select_color(AviabledColors.Yellow)
+	active_elevation = 1
 
 
 func _physics_process(_delta: float) -> void:
@@ -50,7 +51,9 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func edit_cell(cell: HexCell) -> void:
 	cell.color = active_color
-	#cell.Elevation = active_elevation
+	cell.Elevation = active_elevation
+	print("neighbors: ", cell.neighbors)
+	print("elevation: ", cell.elevation)
 	hex_grid.refresh()
 
 
@@ -72,3 +75,7 @@ func _on_blue_box_pressed() -> void:
 
 func _on_white_box_pressed() -> void:
 	select_color(AviabledColors.White)
+
+
+func _on_v_slider_value_changed(value: float) -> void:
+	active_elevation = int(value)
