@@ -31,7 +31,7 @@ func get_cell(pos: Vector3) -> HexCell:
 	var index = coordinates.X + coordinates.Z * width + coordinates.Z / 2
 	var cell: HexCell = cells[index]
 	print("touched at %s" % coordinates)
-	#print("neighbors: ", cell.neighbors)
+	print("neighbors: ", cell.neighbors)
 	#print("elevation: ", cell.elevation)
 	return cell
 
@@ -52,6 +52,17 @@ func create_cell(x: int, z: int, i: int) -> void:
 	)
 	cell.coordinates = HexCoordinates.from_offset_coordinates(x, z)
 	cell.color = default_color
+	if x > 0:
+		cell.set_neighbor(HexDirection.W, cells[i - 1])
+	if z > 0:
+		if (z & 1) == 0:
+			cell.set_neighbor(HexDirection.SE, cells[i - width])
+			if x > 0:
+				cell.set_neighbor(HexDirection.SW, cells[i - width - 1])
+		else:
+			cell.set_neighbor(HexDirection.SW, cells[i - width])
+			if x < width - 1:
+				cell.set_neighbor(HexDirection.SE, cells[i - width + 1])
 	
 	label_3d.position = Vector3(cell.position.x, 0.005, cell.position.z)
 	label_3d.rotation_degrees.x = -90
