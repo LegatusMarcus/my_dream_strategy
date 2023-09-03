@@ -21,9 +21,9 @@ enum AviabledColors {
 
 
 func _init() -> void:
-	colors.push_back(Color.YELLOW)
-	colors.push_back(Color.GREEN)
-	colors.push_back(Color.BLUE)
+	colors.push_back(Color("#fffc1f"))
+	colors.push_back(Color("#20e440"))
+	colors.push_back(Color("#548af8"))
 	colors.push_back(Color.WHITE)
 	select_color(AviabledColors.Yellow)
 
